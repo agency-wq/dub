@@ -117,7 +117,10 @@ model Partner {
   @@index(cryptoWalletAddress)
   @@index(identityVerifiedAt)
   @@index(referredByPartnerId)
-  @@fulltext([email, name, companyName]) // For full-text search
+  // TiDB Serverless only supports single-column FULLTEXT — split from [email, name, companyName].
+  @@fulltext([email])
+  @@fulltext([name])
+  @@fulltext([companyName])
 }
 
 model PartnerInvite {

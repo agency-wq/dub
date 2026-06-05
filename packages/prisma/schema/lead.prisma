@@ -29,5 +29,7 @@ model SubmittedLead {
   @@index([programId, partnerId])
   @@index(partnerId)
   @@index(customerId)
-  @@fulltext([email, name])
+  // TiDB Serverless only supports single-column FULLTEXT — split from [email, name].
+  @@fulltext([email])
+  @@fulltext([name])
 }

@@ -45,5 +45,7 @@ model Customer {
   @@index(partnerId)
   @@index(linkId)
   @@index(country)
-  @@fulltext([email, name]) // For full-text search
+  // TiDB Serverless only supports single-column FULLTEXT — split from [email, name].
+  @@fulltext([email])
+  @@fulltext([name])
 }
