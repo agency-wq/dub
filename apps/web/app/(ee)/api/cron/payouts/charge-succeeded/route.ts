@@ -15,7 +15,7 @@ import { sendPaypalPayouts } from "./send-paypal-payouts";
 import { scheduleDelayedStablecoinPayouts } from "./utils";
 
 export const dynamic = "force-dynamic";
-export const maxDuration = 600; // This function can run for a maximum of 10 minutes
+export const maxDuration = 300; // Capped to 300s for Vercel Hobby plan; raise to 600 once on Pro.
 
 const payloadSchema = z.object({
   invoiceId: z.string(),
